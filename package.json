@@ -1,0 +1,16 @@
+{
+  "name": "volume-control",
+  "version": "0.1.0",
+  "description": "Automatically change your system volume",
+  "main": "src/cronjob.js",
+  "scripts": {
+    "start": "sudo node src/cronjob.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "auto-updater": "^1.0.2",
+    "child_process": "^1.0.2",
+    "cron": "^1.8.2"
+  }
+}
