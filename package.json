@@ -4,7 +4,7 @@
   "description": "Automatically change your system volume",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js -q"
   },
   "author": "",
   "license": "ISC",
