@@ -1,3 +1,4 @@
 ECHO OFF
-node "C:\Program Files\volume-controller\src\index.js"
+cd "C:\Program Files\volume-controller\"
+npm start
 PAUSE
