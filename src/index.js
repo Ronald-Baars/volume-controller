@@ -1,2 +1,2 @@
-require('./services/registerCronjobs');
 require('./services/startWebserver');
+require('./services/registerCronjobs');

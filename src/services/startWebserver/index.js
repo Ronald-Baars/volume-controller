@@ -1,7 +1,21 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const slidersHTML = require('../../pages/sliders');
+const storeNewVolumes = require('../../services/storeNewVolumes');
+
 const app = express();
-const port = 3000;
+const port = 4375;
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.listen(port, () => console.log(`Volume server running on http://localhost:${port}`));
+console.log(`Volume server running on http://localhost:${port}`)
+
+app.get('/', (req, res) => res.send(slidersHTML()));
+
+app.post('/', (req, res) => {
+  storeNewVolumes(req.body);
+  res.send(slidersHTML({ saved: true }));
+});
+
+
+app.listen(port);

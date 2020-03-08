@@ -1,30 +1,28 @@
-const data = require('../../../data/volumes.json');
 const { exec } = require('child_process');
+const getTargetVolume = require('../getTargetVolume');
 
-var OS = process.platform;
-const volumeCap = 0.3;
+const OS = process.platform;
+const volumeCap = 0.25;
 const winMaxVolume = 100;
 const macMaxVolume = 10;
-
-const getTargetVolume = function () {
-  const date = new Date();
-  const currentHour = `${date.getHours()}`;
-  const nextHour = `${date.getHours() + 1}`;
-  const hourProgress = date.getMinutes() / 60;
-
-  const a = data[currentHour];
-  const b = data[nextHour];
-  const difference = b - a;
-
-  return a + (difference * hourProgress);
-};
+const progressBarLength = 30;
 
 module.exports = () => {
-  const volume = getTargetVolume() * volumeCap;
-  const macCommand = `sudo osascript -e "set Volume ${volume * macMaxVolume}"`;
-  const winCommand = `nircmd.exe setsysvolume ${volume * winMaxVolume}`;
-  const command = (OS === 'darwin') ? macCommand : winCommand;
+  const targetVolume = getTargetVolume();
 
-  console.log('Changing volume to', volume);
+  // Generate the command to fire to the OS
+  const volume = targetVolume * volumeCap;
+  const macCommand = `sudo osascript -e "set Volume ${Math.round(volume * macMaxVolume)}"`;
+  const winCommand = `setvol ${Math.round(volume * winMaxVolume)}`;
+  const command = (OS === 'darwin') ? macCommand : winCommand;
   exec(command);
+
+  // Create a visual progress bar to log
+  let progress = '';
+
+  for (let i = 0; i < progressBarLength; i++) {
+    progress += (targetVolume * progressBarLength) > i ? '◼' : '◻';
+  }
+
+  console.log(`${progress} ${Math.round(targetVolume * 100)}%`);
 }
