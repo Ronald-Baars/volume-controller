@@ -78,8 +78,8 @@ module.exports = (saved) => `
       <form action="." method="POST">
         ${Object.entries(data).map(([time, value]) => `
         <label>${time}:00</label>
-        <input data-displayid="display-${time}" name="${time}" type="range" min="0" max="10" value="${value * 10}" />
-        <div class="display" id="display-${time}">${value * 100}%</div>
+        <input data-displayid="display-${time}" name="${time}" type="range" min="0" max="20" value="${value * 20}" />
+        <div class="display" id="display-${time}">${Math.round(value * 100)}%</div>
         <br />
         `).join('')}
         <input type="submit" value="Save" />
@@ -91,7 +91,7 @@ module.exports = (saved) => `
       sliders.map(slider => {
         slider.addEventListener('mousemove', () => {
           const display = document.getElementById(slider.dataset.displayid);
-          display.innerHTML = (slider.value * 10) + "%";
+          display.innerHTML = (slider.value * 5) + "%";
         });
       });
     </script>
