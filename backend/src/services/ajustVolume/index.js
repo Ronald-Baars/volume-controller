@@ -2,7 +2,7 @@ const { exec } = require('child_process');
 const getTargetVolume = require('../getTargetVolume');
 
 const OS = process.platform;
-const volumeCap = 0.25;
+const volumeCap = 0.11;
 const winMaxVolume = 100;
 const macMaxVolume = 10;
 const progressBarLength = 30;
