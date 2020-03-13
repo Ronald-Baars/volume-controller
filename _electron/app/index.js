@@ -1,6 +1,10 @@
-const path = require('path');
-const { app, Menu, Tray } = require('electron');
+const { app } = require('electron');
+
 const autoLaunch = require('./services/auto-launch');
+const trayIcon = require('./services/tray-icon');
+const { createWindow, toggleWindow } = require('./services/window-manager');
+require('electron-reload')(__dirname);
+
 let tray = null;
 
 app.on('ready', () => {
@@ -8,20 +12,10 @@ app.on('ready', () => {
   // Make sure the app runs on boot
   autoLaunch();
 
-  // Hide the app from the Mac OS dock
-  if (app.dock) app.dock.hide();
+  // Enable tray icon
+  trayIcon(tray, toggleWindow);
 
-  // Assign a tray icon
-  tray = new Tray(path.join(__dirname, 'icons/icon@2x.png'));
+  // Create window (in the background)
+  createWindow();
 
-  // Assign a tooltip
-  tray.setToolTip('Volume manager');
-
-  // Make sure click events work on windows
-  if (process.platform === 'win32') tray.on('click', tray.popUpContextMenu);
-
-  // Create the context menu
-  tray.setContextMenu(Menu.buildFromTemplate([
-    { label: 'Quit', click() { app.quit(); } }
-  ]));
 });

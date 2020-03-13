@@ -8,12 +8,12 @@
     "package": "electron-packager app/ --platform=darwin --arch=x64 --out=out --overwrite"
   },
   "devDependencies": {
-    "electron-packager": "^7.3.0",
+    "electron-packager": "^14.2.1",
     "electron-prebuilt": "^1.2.7",
-    "electron-prebuilt-compile": "^1.7.9"
+    "electron-prebuilt-compile": "^4.0.0"
   },
   "dependencies": {
     "auto-launch": "^5.0.5",
-    "electron-reload": "^1.2.2"
+    "electron-reload": "^1.5.0"
   }
 }
