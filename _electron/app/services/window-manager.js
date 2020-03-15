@@ -3,7 +3,7 @@ const { app, BrowserWindow } = require('electron');
 
 let trayWindow = null;
 let loginWindow = null;
-const loggedIn = false;
+const loggedIn = true;
 
 const showWindow = (tray) => {
   const position = getWindowPosition(tray);
@@ -34,7 +34,7 @@ const createWindow = () => {
     transparent: true,
   });
 
-  trayWindow.loadURL(`file://${path.join(__dirname, '../views/home/index.html')}`);
+  trayWindow.loadURL(`file://${path.join(__dirname, '../views/index.html')}`);
 
   // Hide the window when it loses focus
   trayWindow.on('blur', () => {

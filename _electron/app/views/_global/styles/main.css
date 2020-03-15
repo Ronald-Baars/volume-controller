@@ -1,0 +1,17 @@
+@import url('variables.css');
+@import url('fonts.css');
+@import url('navbar.css');
+
+* {
+  -webkit-user-select: none;
+  font-family: 'Rubik';
+}
+
+body {
+  background: var(--light);
+  margin: 0;
+}
+
+img {
+  pointer-events: none;
+}
