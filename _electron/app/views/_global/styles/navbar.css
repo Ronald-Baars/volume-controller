@@ -32,10 +32,19 @@ nav ul li {
 }
 
 /* Navigation item icon */
-nav ul li img {
+nav ul li svg {
   height: 18px;
   width: 18px;
   margin-bottom: 6px;
+}
+
+nav ul li svg path {
+  fill: var(--dark);
+  transition: fill 0.3s;
+}
+
+nav ul li.active svg path {
+  fill: var(--accent);
 }
 
 /* Navigation item text */
@@ -45,8 +54,28 @@ nav ul li span {
   color: var(--dark);
   letter-spacing: 0;
   text-align: center;
+  transition: color 0.3s;
 }
 
 nav ul li.active span {
   color: var(--accent);
+}
+
+/* PAGE */
+iframe.page {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  height: calc(100% - 60px);
+  pointer-events: none;
+  transition: transform 0.3s, opacity 0.3s;
+  transform: translateY(-20px);
+}
+
+iframe.page.active {
+  opacity: 1;
+  pointer-events: all;
+  height: calc(100% - 60px);
+  transform: translateY(0);
+  transition-delay: 0.2s;
 }
