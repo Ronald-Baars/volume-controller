@@ -10,7 +10,7 @@ module.exports = (tray, toggleWindow) => {
   tray = new Tray(path.join(__dirname, '../icons/icon@2x.png'));
 
   // Assign a tooltip
-  tray.setToolTip('Volume manager');
+  tray.setToolTip('Volume Master');
 
   tray.on('click', (event) => {
     toggleWindow(tray);

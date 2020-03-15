@@ -1,0 +1,15 @@
+* {
+  -webkit-user-select: none;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--accent);
+  color: var(--white);
+}
+
+#logo {
+  display: block;
+  width: 155px;
+  margin: 42px auto;
+}

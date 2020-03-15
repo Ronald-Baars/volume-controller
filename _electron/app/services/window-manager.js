@@ -1,16 +1,18 @@
 const path = require('path');
-const { BrowserWindow } = require('electron');
+const { app, BrowserWindow } = require('electron');
 
-let window = null;
+let trayWindow = null;
+let loginWindow = null;
+const loggedIn = false;
 
 const showWindow = (tray) => {
   const position = getWindowPosition(tray);
-  window.setPosition(position.x, position.y, false);
-  window.show();
+  trayWindow.setPosition(position.x, position.y, false);
+  trayWindow.show();
 }
 
 const getWindowPosition = (tray) => {
-  const windowBounds = window.getBounds();
+  const windowBounds = trayWindow.getBounds();
   const trayBounds = tray.getBounds();
 
   // Center window horizontally below the tray icon
@@ -21,27 +23,55 @@ const getWindowPosition = (tray) => {
 }
 
 const createWindow = () => {
-  window = new BrowserWindow({
+
+  trayWindow = new BrowserWindow({
     width: 320,
     height: 450,
     show: false,
     frame: false,
     fullscreenable: false,
     resizable: false,
-    transparent: true
+    transparent: true,
   });
-  window.loadURL(`file://${path.join(__dirname, '../interface/index.html')}`);
+
+  trayWindow.loadURL(`file://${path.join(__dirname, '../views/home/index.html')}`);
 
   // Hide the window when it loses focus
-  window.on('blur', () => {
-    if (!window.webContents.isDevToolsOpened()) {
-      window.hide();
+  trayWindow.on('blur', () => {
+    if (!trayWindow.webContents.isDevToolsOpened()) {
+      trayWindow.hide();
     }
   });
+
+  if (!loggedIn) {
+    createLoginWindow();
+  }
+}
+
+const createLoginWindow = () => {
+
+  loginWindow = new BrowserWindow({
+    width: 320,
+    height: 450,
+    frame: false,
+    fullscreenable: false,
+    resizable: false,
+    transparent: true,
+    titleBarStyle: 'hiddenInset',
+    backgroundColor: "#5D73FF"
+  });
+
+  loginWindow.loadURL(`file://${path.join(__dirname, '../views/login/index.html')}`);
+
+  loginWindow.on('closed', app.quit);
 }
 
 const toggleWindow = (tray) => {
-  window.isVisible() ? window.hide() : showWindow(tray);
+  if (loggedIn) {
+    trayWindow.isVisible() ? trayWindow.hide() : showWindow(tray);
+  } else {
+    loginWindow.isVisible() ? loginWindow.hide() : loginWindow.show();
+  }
 }
 
 module.exports = {

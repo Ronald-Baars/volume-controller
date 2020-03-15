@@ -1,7 +1,7 @@
 {
-  "name": "volume-controller-app",
+  "name": "volume-master-app",
   "version": "0.1.0",
-  "description": "The desktop app for Volume controller",
+  "description": "The desktop app for Volume master",
   "main": "app/main.js",
   "scripts": {
     "start": "electron app/.",
@@ -13,7 +13,6 @@
     "electron-prebuilt-compile": "^4.0.0"
   },
   "dependencies": {
-    "auto-launch": "^5.0.5",
-    "electron-reload": "^1.5.0"
+    "auto-launch": "^5.0.5"
   }
 }
