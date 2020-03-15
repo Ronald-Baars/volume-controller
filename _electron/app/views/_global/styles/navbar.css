@@ -67,8 +67,10 @@ iframe.page {
   top: 0;
   opacity: 0;
   height: calc(100% - 60px);
+  width: 100%;
   pointer-events: none;
   transition: transform 0.3s, opacity 0.3s;
+  transition-timing-function: ease-in;
   transform: translateY(-20px);
 }
 
@@ -77,5 +79,6 @@ iframe.page.active {
   pointer-events: all;
   height: calc(100% - 60px);
   transform: translateY(0);
-  transition-delay: 0.2s;
+  transition-timing-function: ease-out;
+  transition-delay: 0.3s;
 }
