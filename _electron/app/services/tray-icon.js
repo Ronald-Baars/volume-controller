@@ -1,7 +1,7 @@
 const path = require('path');
 const { app, Menu, Tray } = require('electron');
 
-module.exports = (tray, toggleWindow) => {
+module.exports = ({ tray, toggleWindow, loggedIn }) => {
 
   // Hide the app from the Mac OS dock
   if (app.dock) app.dock.hide();
@@ -13,6 +13,6 @@ module.exports = (tray, toggleWindow) => {
   tray.setToolTip('Volume Master');
 
   tray.on('click', (event) => {
-    toggleWindow(tray);
+    toggleWindow({ tray, loggedIn });
   })
 };

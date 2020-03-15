@@ -3,7 +3,6 @@ const { app, BrowserWindow } = require('electron');
 
 let trayWindow = null;
 let loginWindow = null;
-const loggedIn = true;
 
 const showWindow = (tray) => {
   const position = getWindowPosition(tray);
@@ -22,7 +21,7 @@ const getWindowPosition = (tray) => {
   return { x: x, y: y }
 }
 
-const createWindow = () => {
+const createWindow = ({ loggedIn }) => {
 
   trayWindow = new BrowserWindow({
     width: 320,
@@ -66,7 +65,7 @@ const createLoginWindow = () => {
   loginWindow.on('closed', app.quit);
 }
 
-const toggleWindow = (tray) => {
+const toggleWindow = ({ tray, loggedIn }) => {
   if (loggedIn) {
     trayWindow.isVisible() ? trayWindow.hide() : showWindow(tray);
   } else {

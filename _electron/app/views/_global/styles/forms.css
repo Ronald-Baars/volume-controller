@@ -1,0 +1,40 @@
+/* Form input container */
+form .input {
+  display: flex;
+  flex-direction: row;
+  background: var(--white);
+  border-radius: 7px;
+  height: 36px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+/* Form input icon */
+form .input svg {
+  height: 14px;
+  width: 14px;
+  margin: 0 12px 0 16px;
+}
+form .input svg path {
+  fill: var(--dark);
+}
+
+form .input:focus-within svg path {
+  fill: var(--accent);
+}
+
+/* Form input field */
+form .input input {
+  color: var(--dark);
+  font-weight: 400;
+  line-height: 20px;
+  font-size: 13px;
+  outline: none;
+  border: none;
+  flex: 1;
+  margin-right: 12px;
+}
+
+form .input:focus-within input {
+  color: var(--accent);
+}

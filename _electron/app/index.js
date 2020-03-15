@@ -8,13 +8,15 @@ let tray = null;
 
 app.on('ready', () => {
 
+  const loggedIn = false;
+
   // Make sure the app runs on boot
   autoLaunch();
 
   // Enable tray icon
-  trayIcon(tray, toggleWindow);
+  trayIcon({ tray, toggleWindow, loggedIn });
 
   // Create window (in the background)
-  createWindow();
+  createWindow({ loggedIn });
 
 });
