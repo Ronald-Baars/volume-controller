@@ -17,18 +17,6 @@ ul.weekSelector li {
   padding: 0;
   margin: 0 1px 0 0;
   text-align: center;
-  background: var(--white);
-}
-
-ul.weekSelector li:first-of-type {
-  margin: 0;
-  border-radius: 10px 0 0 10px;
-}
-
-ul.weekSelector li:last-of-type {
-  margin: 0;
-  border-radius: 0 10px 10px 0;
-
 }
 
 /* Weekselector hidden radio button */
@@ -43,6 +31,17 @@ ul.weekSelector li input[type="radio"] + label {
   width: 100%;
   justify-content: center;
   align-items: center;
+  background: var(--white);
+}
+
+ul.weekSelector li:first-of-type input[type="radio"] + label {
+  margin: 0;
+  border-radius: 10px 0 0 10px;
+}
+
+ul.weekSelector li:last-of-type input[type="radio"] + label {
+  margin: 0;
+  border-radius: 0 10px 10px 0;
 }
 
 ul.weekSelector li input[type="radio"]:checked + label {
