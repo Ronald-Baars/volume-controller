@@ -62,6 +62,9 @@ const createLoginWindow = () => {
 
   loginWindow.loadURL(`file://${path.join(__dirname, '../views/login/index.html')}`);
   loginWindow.on('closed', app.quit);
+  loginWindow.webContents.on('will-navigate', (e) => {
+    console.log(e);
+  });
 }
 
 const toggleWindow = ({ tray, loggedIn }) => {
