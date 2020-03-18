@@ -1,0 +1,12 @@
+{
+  "name": "volume-master-backend",
+  "version": "0.1.0",
+  "description": "The backend for Volume master",
+  "main": "server/main.js",
+  "scripts": {
+    "start": "node server/."
+  },
+  "dependencies": {
+    "express": "4.16.4"
+  }
+}

@@ -45,3 +45,18 @@ form input.cta {
   background-size: 16px;
   margin: 36px auto;
 }
+
+a.register {
+  animation: intro-input 0.7s 4.5s forwards ease-out;
+  opacity: 0;
+  display: block;
+  width: 100%;
+  margin-top: 44px;
+  text-align: center;
+  color: var(--white);
+  text-decoration: none;
+}
+
+a.register strong {
+  font-weight: 500;
+}

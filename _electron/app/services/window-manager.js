@@ -1,5 +1,5 @@
 const path = require('path');
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, webContents } = require('electron');
 
 let trayWindow = null;
 let loginWindow = null;
@@ -61,7 +61,6 @@ const createLoginWindow = () => {
   });
 
   loginWindow.loadURL(`file://${path.join(__dirname, '../views/login/index.html')}`);
-
   loginWindow.on('closed', app.quit);
 }
 
