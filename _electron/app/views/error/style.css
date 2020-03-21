@@ -1,0 +1,20 @@
+
+body {
+  background: var(--accent) url('../../static/icons/background-circles-animated.svg') no-repeat center 180px;
+  color: var(--white);
+  margin: 24px 12px 0;
+}
+
+#logo {
+  display: block;
+  width: 155px;
+  margin: 42px auto;
+}
+
+#title {
+  font-size: 200%;
+}
+
+#message {
+  font-size: 100%;
+}

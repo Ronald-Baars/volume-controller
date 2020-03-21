@@ -65,9 +65,10 @@ nav ul li.active span {
 iframe.page {
   position: absolute;
   top: 0;
-  opacity: 0;
   height: calc(100% - 60px);
   width: 100%;
+
+  opacity: 0;
   pointer-events: none;
   transition: transform 0.25s, opacity 0.25s;
   transition-timing-function: ease-in;
@@ -77,7 +78,6 @@ iframe.page {
 iframe.page.active {
   opacity: 1;
   pointer-events: all;
-  height: calc(100% - 60px);
   transform: translateY(0);
   transition-timing-function: ease-out;
   transition-delay: 0.2s;

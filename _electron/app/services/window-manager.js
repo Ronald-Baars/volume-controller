@@ -15,10 +15,10 @@ const getWindowPosition = (tray) => {
   const trayBounds = tray.getBounds();
 
   // Center window horizontally below the tray icon
-  const x = Math.round(trayBounds.x + (trayBounds.width / 2) - (windowBounds.width / 2))
+  const x = Math.round(trayBounds.x + (trayBounds.width / 2) - (windowBounds.width / 2));
   // Position window 4 pixels vertically below the tray icon
-  const y = Math.round(trayBounds.y + trayBounds.height + 4)
-  return { x: x, y: y }
+  const y = Math.round(trayBounds.y + trayBounds.height + 4);
+  return { x: x, y: y };
 }
 
 const createWindow = ({ loggedIn }) => {
@@ -62,8 +62,14 @@ const createLoginWindow = () => {
 
   loginWindow.loadURL(`file://${path.join(__dirname, '../views/login/index.html')}`);
   loginWindow.on('closed', app.quit);
-  loginWindow.webContents.on('will-navigate', (e) => {
-    console.log(e);
+
+  // When user clicks on register button, resize the window
+  loginWindow.webContents.on('did-navigate', (e, url) => {
+    if (url.includes('views/register')) {
+      loginWindow.setSize(320, 600);
+      loginWindow.center();
+
+    };
   });
 }
 

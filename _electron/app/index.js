@@ -8,7 +8,7 @@ let tray = null;
 
 app.on('ready', () => {
 
-  const loggedIn = false;
+  const loggedIn = true;
 
   // Make sure the app runs on boot
   autoLaunch();

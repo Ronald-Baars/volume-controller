@@ -3,6 +3,12 @@
 <head>
   <link rel="stylesheet" href="../_global/styles/main.css">
   <link rel="stylesheet" href="style.css">
+  <script>
+    let error;
+    fetch('http://localhost:8954/api/ping').catch(() => {
+      window.location = "../error/index.html?title=Oops...&message=Can't connect to the server at this moment.";
+    });
+  </script>
 </head>
 
 <body>

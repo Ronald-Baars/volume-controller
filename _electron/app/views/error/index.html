@@ -1,0 +1,23 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="../_global/styles/main.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <img id="logo" src="../../static/logo.svg" />
+
+  <div class="error">
+    <p id="title"></p>
+    <p id="message"></p>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    document.getElementById('title').innerHTML = urlParams.get('title');
+    document.getElementById('message').innerHTML = urlParams.get('message');
+  </script>
+</body>
+
+</html>
