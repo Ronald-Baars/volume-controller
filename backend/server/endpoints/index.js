@@ -1,5 +1,5 @@
 module.exports = {
-  license: require('./license/'),
+  license: require('../services/license-check'),
   login: require('./login/'),
   ping: require('./ping/'),
   register: require('./register/'),

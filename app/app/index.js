@@ -4,7 +4,7 @@ const autoLaunch = require('./services/auto-launch');
 const trayIcon = require('./services/tray-icon');
 const { createWindow, toggleWindow } = require('./services/window-manager');
 
-let tray = null;
+let tray;
 
 app.on('ready', () => {
 
